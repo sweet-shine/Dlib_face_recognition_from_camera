@@ -223,7 +223,6 @@ For more details, please refer to my blog (in chinese) or mail to me :
   
 * Mail: coneypo@foxmail.com ( Dlib 相关 repo 问题请联系 @foxmail 而不是 @intel )
 
-
-仅限于交流学习, 商业合作勿扰;
+* AD: 用我的滴滴云 AI 大师推荐码: 7788, 购买滴滴云 GPU/vGPU/机器学习产品享 9 折优惠, 点击 https://www.didiyun.com/ 前往滴滴云官网
 
 Thanks for your support.

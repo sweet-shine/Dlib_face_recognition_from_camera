@@ -1,6 +1,3 @@
-# OpenCV 调用摄像头
-# 默认调用笔记本摄像头
-
 # Author:   coneypo
 # Blog:     http://www.cnblogs.com/AdaminXie
 # GitHub:   https://github.com/coneypo/Dlib_face_recognition_from_camera
@@ -34,7 +31,7 @@ cap = cv2.VideoCapture(0)
 18. cv2.CAP_PROP_RECTIFICATION Rectification flag for stereo cameras (note: only supported by DC1394 v 2.x backend currently)
 """
 
-# The default shape of camera will be 640x480 in Windows or Ubuntu
+# The default size of frame from camera will be 640x480 in Windows or Ubuntu
 # So we will not set "cap.set" here, it doesn't work
 # cap.set(propId=cv2.CAP_PROP_FRAME_WIDTH, value=cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 
