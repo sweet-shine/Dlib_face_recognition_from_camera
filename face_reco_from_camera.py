@@ -109,10 +109,10 @@ class Face_Recognizer:
         return img_with_name
 
     # 修改显示人名
-    def modify_name_camera_list(self):
+    # def modify_name_camera_list(self):
         # Default known name: person_1, person_2, person_3
-        self.name_known_list[0] ='张三'.encode('utf-8').decode()
-        self.name_known_list[1] ='李四'.encode('utf-8').decode()
+        # self.name_known_list[0] ='张三'.encode('utf-8').decode()
+        # self.name_known_list[1] ='李四'.encode('utf-8').decode()
         # self.name_known_list[2] ='xx'.encode('utf-8').decode()
         # self.name_known_list[3] ='xx'.encode('utf-8').decode()
         # self.name_known_list[4] ='xx'.encode('utf-8').decode()
@@ -189,7 +189,7 @@ class Face_Recognizer:
 
                         self.faces_cnt = len(faces)
                         # 7. 在这里更改显示的人名 / Modify name if needed
-                        self.modify_name_camera_list()
+                        # self.modify_name_camera_list()
                         # 8. 写名字 / Draw name
                         # self.draw_name(img_rd)
                         img_with_name = self.draw_name(img_rd)
