@@ -9,7 +9,9 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-app.config['UPLOAD_FOLDER'] = os.path.abspath(os.path.join(os.getcwd(), "\data\photos"))
+app.config['UPLOAD_FOLDER'] = os.getcwd() + "\data\photos"
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
 
 html = '''
     <!DOCTYPE html>

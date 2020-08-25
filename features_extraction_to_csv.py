@@ -14,18 +14,19 @@ import dlib
 from skimage import io
 import csv
 import numpy as np
+from utils import constants
 
 # 要读取人脸图像文件的路径
-path_images_from_camera = "data/data_faces_from_camera/"
+path_images_from_camera = constants.path_photos_from_camera
 
 # 1. Dlib 正向人脸检测器
 detector = dlib.get_frontal_face_detector()
 
-# 2. Dlib 人脸 landmark 特征点检测器
-predictor = dlib.shape_predictor('data/data_dlib/shape_predictor_68_face_landmarks.dat')
+# 2. Dlib 人脸 landmark 特征点检测器，训练好的人脸 68 点特征检测器，进行人脸面部轮廓特征提取
+predictor = dlib.shape_predictor(constants.landmark_path)
 
 # 3. Dlib Resnet 人脸识别模型，提取 128D 的特征矢量
-face_reco_model = dlib.face_recognition_model_v1("data/data_dlib/dlib_face_recognition_resnet_model_v1.dat")
+face_reco_model = dlib.face_recognition_model_v1(constants.resnet_path)
 
 
 # 返回单张图像的 128D 特征

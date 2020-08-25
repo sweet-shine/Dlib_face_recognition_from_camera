@@ -3,13 +3,15 @@
 # 2020-08-20
 from flask import Flask
 
+import upload_photo
+
 app = Flask(__name__)
 
 
-@app.route('/add_face', methods=['GET'])
+@app.route('/upload_photo', methods=['GET', 'POST'])
 def add_face():
 
-    return 'hahaa'
+    return upload_photo.upload_file()
 
 
 @app.route('/generate_features')

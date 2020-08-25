@@ -19,18 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e58b655a-3a9b-4001-b4da-39e07ab46629" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/photos/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo_upload.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_demo/demo_rsplit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_demo/demo_upload_folder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/upload_photo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Dlib_face_recognition_from_camera.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Dlib_face_recognition_from_camera.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="e58b655a-3a9b-4001-b4da-39e07ab46629" name="Default Changelist" comment="--新增接口化功能（index.py），通过接口调用上传照片功能(upload_photo)">
+      <change afterPath="$PROJECT_DIR$/get_faces_from_camera_new.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/face_reco_from_camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/face_reco_from_camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data_faces_from_camera/person_2/img_face_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/features_all.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo_upload.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/features_extraction_to_csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/features_extraction_to_csv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_demo/demo_upload_folder.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_demo/demo_upload_folder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_photo.py" beforeDir="false" afterPath="$PROJECT_DIR$/upload_photo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,30 +64,12 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\code\Dlib_face_recognition_from_camera" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\Dlib_face_recognition_from_camera" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.upload_photo">
-    <configuration name="demo_rsplit" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Dlib_face_recognition_from_camera" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test_demo" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_demo/demo_rsplit.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="demo_upload" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.get_faces_from_camera_new">
+    <configuration name="demo_upload_folder (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Dlib_face_recognition_from_camera" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -100,7 +81,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo_upload.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo_upload_folder.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -122,6 +103,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_demo/demo_upload_folder.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="get_faces_from_camera_new" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Dlib_face_recognition_from_camera" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/get_faces_from_camera_new.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -173,19 +175,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.index" />
-      <item itemvalue="Python.demo_upload" />
-      <item itemvalue="Python.demo_rsplit" />
       <item itemvalue="Python.upload_photo" />
       <item itemvalue="Python.demo_upload_folder" />
+      <item itemvalue="Python.demo_upload_folder (1)" />
+      <item itemvalue="Python.index" />
+      <item itemvalue="Python.get_faces_from_camera_new" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.upload_photo" />
+        <item itemvalue="Python.get_faces_from_camera_new" />
         <item itemvalue="Python.demo_upload_folder" />
-        <item itemvalue="Python.demo_upload" />
-        <item itemvalue="Python.demo_rsplit" />
         <item itemvalue="Python.index" />
+        <item itemvalue="Python.upload_photo" />
+        <item itemvalue="Python.demo_upload_folder (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -201,6 +203,14 @@
       <option name="presentableId" value="Default" />
       <updated>1538622047029</updated>
     </task>
+    <task id="LOCAL-00001" summary="--新增接口化功能（index.py），通过接口调用上传照片功能(upload_photo)">
+      <created>1598005036776</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598005036776</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -215,31 +225,55 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="--新增接口化功能（index.py），通过接口调用上传照片功能(upload_photo)" />
+    <option name="LAST_COMMIT_MESSAGE" value="--新增接口化功能（index.py），通过接口调用上传照片功能(upload_photo)" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1515" height="269" key="GridCell.Tab.0.bottom" timestamp="1597996186477">
+    <state x="549" y="172" key="FileChooserDialogImpl" timestamp="1598248004211">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1515" height="269" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1597996186477" />
-    <state width="1515" height="269" key="GridCell.Tab.0.center" timestamp="1597996186477">
+    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1598248004211" />
+    <state width="1515" height="247" key="GridCell.Tab.0.bottom" timestamp="1598352639841">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1515" height="269" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1597996186477" />
-    <state width="1515" height="269" key="GridCell.Tab.0.left" timestamp="1597996186477">
+    <state width="1515" height="247" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1598352639841" />
+    <state width="1515" height="247" key="GridCell.Tab.0.center" timestamp="1598352639841">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1515" height="269" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1597996186477" />
-    <state width="1515" height="269" key="GridCell.Tab.0.right" timestamp="1597996186477">
+    <state width="1515" height="247" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1598352639841" />
+    <state width="1515" height="247" key="GridCell.Tab.0.left" timestamp="1598352639841">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state width="1515" height="269" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1597996186477" />
+    <state width="1515" height="247" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1598352639841" />
+    <state width="1515" height="247" key="GridCell.Tab.0.right" timestamp="1598352639841">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1515" height="247" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1598352639841" />
     <state x="239" y="37" key="SettingsEditor" timestamp="1597914515508">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="239" y="37" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1597914515508" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1597977794887">
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2" timestamp="1598005198264">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1597977794887" />
+    <state x="361" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1598005198264" />
+    <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598352970205">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="93" y="93" width="1350" height="648" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.834@0.0.1536.834" timestamp="1598352970205" />
+    <state x="573" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598352970189">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="573" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.834@0.0.1536.834" timestamp="1598352970189" />
+    <state x="496" y="317" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1598005156520">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="496" y="317" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.834@0.0.1536.834" timestamp="1598005156520" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1598342408599">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1598342408599" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
