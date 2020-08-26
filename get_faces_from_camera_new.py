@@ -193,6 +193,7 @@ def get_faces_from_camera():
 
     Face_Register_con = Face_Register()
     Face_Register_con.run()
+    return "stop get faces"
 
 
 if __name__ == '__main__':

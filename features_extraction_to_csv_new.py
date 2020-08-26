@@ -14,18 +14,22 @@ import dlib
 from skimage import io
 import csv
 import numpy as np
+from utils import constants
+from flask import Flask
+
+app = Flask(__name__)
 
 # 要读取人脸图像文件的路径
-path_images_from_camera = "data/data_faces_from_camera/"
+path_images_from_camera = constants.path_photos_from_camera
 
 # 1. Dlib 正向人脸检测器
 detector = dlib.get_frontal_face_detector()
 
 # 2. Dlib 人脸 landmark 特征点检测器
-predictor = dlib.shape_predictor('data/data_dlib/shape_predictor_68_face_landmarks.dat')
+predictor = dlib.shape_predictor(constants.landmark_path)
 
 # 3. Dlib Resnet 人脸识别模型，提取 128D 的特征矢量
-face_reco_model = dlib.face_recognition_model_v1("data/data_dlib/dlib_face_recognition_resnet_model_v1.dat")
+face_reco_model = dlib.face_recognition_model_v1(constants.resnet_path)
 
 
 # 返回单张图像的 128D 特征
@@ -75,20 +79,34 @@ def return_features_mean_personX(path_faces_personX):
     return features_mean_personX
 
 
-# 获取已录入的最后一个人脸序号 / get the num of latest person
-person_list = os.listdir("data/data_faces_from_camera/")
-person_num_list = []
-for person in person_list:
-    person_num_list.append(int(person.split('_')[-1]))
-person_cnt = max(person_num_list)
+def get_num_of_lastest_person():
+    # 获取已录入的最后一个人脸序号 / get the num of latest person
+    person_list = os.listdir("data/data_faces_from_camera/")
+    person_num_list = []
+    for person in person_list:
+        person_num_list.append(int(person.split('_')[-1]))
+    person_cnt = max(person_num_list)
+    return person_cnt
 
-with open("data/features_all.csv", "w", newline="") as csvfile:
-    writer = csv.writer(csvfile)
-    for person in range(person_cnt):
-        # Get the mean/average features of face/personX, it will be a list with a length of 128D
-        print(path_images_from_camera + "person_" + str(person + 1))
-        features_mean_personX = return_features_mean_personX(path_images_from_camera + "person_" + str(person + 1))
-        writer.writerow(features_mean_personX)
-        print("特征均值 / The mean of features:", list(features_mean_personX))
-        print('\n')
-    print("所有录入人脸数据存入 / Save all the features of faces registered into: data/features_all.csv")
+
+def write_to_csv():
+    with open("data/features_all.csv", "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        for person in range(get_num_of_lastest_person()):
+            # Get the mean/average features of face/personX, it will be a list with a length of 128D
+            print(path_images_from_camera + "person_" + str(person + 1))
+            features_mean_personX = return_features_mean_personX(path_images_from_camera + "person_" + str(person + 1))
+            writer.writerow(features_mean_personX)
+            print("特征均值 / The mean of features:", list(features_mean_personX))
+            print('\n')
+        print("所有录入人脸数据存入 / Save all the features of faces registered into: data/features_all.csv")
+
+
+@app.route('/features_extraction_to_csv', methods=['POST'])
+def features_extraction_to_csv():
+    write_to_csv()
+    return "success"
+
+
+if __name__ == '__main__':
+    app.run(debug=True, host="0.0.0.0", port=5000)

@@ -10,3 +10,6 @@ landmark_path = "data/data_dlib/shape_predictor_68_face_landmarks.dat"
 
 # Dlib Resnet 人脸识别模型
 resnet_path = "data/data_dlib/dlib_face_recognition_resnet_model_v1.dat"
+
+#特征值csv文件地址
+path_features_known_csv = "data/features_all.csv"
