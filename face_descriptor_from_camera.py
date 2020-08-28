@@ -9,10 +9,10 @@ import time
 detector = dlib.get_frontal_face_detector()
 
 # 2. Dlib 人脸 landmark 特征点检测器
-predictor = dlib.shape_predictor('data/data_dlib/shape_predictor_68_face_landmarks.dat')
+predictor = dlib.shape_predictor('static/data_dlib/shape_predictor_68_face_landmarks.dat')
 
 # 3. Dlib Resnet 人脸识别模型，提取 128D 的特征矢量
-face_reco_model = dlib.face_recognition_model_v1("data/data_dlib/dlib_face_recognition_resnet_model_v1.dat")
+face_reco_model = dlib.face_recognition_model_v1("static/data_dlib/dlib_face_recognition_resnet_model_v1.dat")
 
 
 class Face_Descriptor:

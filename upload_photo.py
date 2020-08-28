@@ -17,7 +17,7 @@ html = '''
     <!DOCTYPE html>
     <title>Upload File</title>
     <h1>图片上传</h1>
-    <form method=post enctype=multipart/form-data>
+    <form method=post enctype=multipart/form-static>
          <input type=file name=file>
          <input type=submit value=上传>
     </form>

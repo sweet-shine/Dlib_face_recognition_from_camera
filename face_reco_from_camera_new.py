@@ -8,16 +8,15 @@
 # Created at 2018-05-11
 # Updated at 2020-05-29
 
-import dlib         # 人脸处理的库 Dlib
+import dlib  # 人脸处理的库 Dlib
 import numpy as np  # 数据处理的库 Numpy
-import cv2          # 图像处理的库 OpenCV
-import pandas as pd # 数据处理的库 Pandas
+import cv2  # 图像处理的库 OpenCV
+import pandas as pd  # 数据处理的库 Pandas
 import os
 import time
 from PIL import Image, ImageDraw, ImageFont
 from utils import constants
 from flask import Flask
-
 
 app = Flask(__name__)
 
@@ -25,11 +24,11 @@ app = Flask(__name__)
 detector = dlib.get_frontal_face_detector()
 
 # 2. Dlib 人脸 landmark 特征点检测器
-# predictor = dlib.shape_predictor('data/data_dlib/shape_predictor_68_face_landmarks.dat')
+# predictor = dlib.shape_predictor('static/data_dlib/shape_predictor_68_face_landmarks.dat')
 predictor = dlib.shape_predictor(constants.landmark_path)
 
 # 3. Dlib Resnet 人脸识别模型，提取 128D 的特征矢量
-# face_reco_model = dlib.face_recognition_model_v1("data/data_dlib/dlib_face_recognition_resnet_model_v1.dat")
+# face_reco_model = dlib.face_recognition_model_v1("static/data_dlib/dlib_face_recognition_resnet_model_v1.dat")
 face_reco_model = dlib.face_recognition_model_v1(constants.resnet_path)
 
 
@@ -56,7 +55,7 @@ class Face_Recognizer:
 
     # 从 "features_all.csv" 读取录入人脸特征
     def get_face_database(self):
-        if os.path.exists("data/features_all.csv"):
+        if os.path.exists("static/features_all.csv"):
             path_features_known_csv = constants.path_features_known_csv
             csv_rd = pd.read_csv(path_features_known_csv, header=None)
             # 2. 读取已知人脸数据 / Print known faces
@@ -68,7 +67,7 @@ class Face_Recognizer:
                     else:
                         features_someone_arr.append(csv_rd.iloc[i][j])
                 self.features_known_list.append(features_someone_arr)
-                self.name_known_list.append("Person_"+str(i+1))
+                self.name_known_list.append("Person_" + str(i + 1))
             self.name_known_cnt = len(self.name_known_list)
             print("Faces in Database：", len(self.features_known_list))
             return 1
@@ -117,12 +116,12 @@ class Face_Recognizer:
 
     # 修改显示人名
     # def modify_name_camera_list(self):
-        # Default known name: person_1, person_2, person_3
-        # self.name_known_list[0] ='张三'.encode('utf-8').decode()
-        # self.name_known_list[1] ='李四'.encode('utf-8').decode()
-        # self.name_known_list[2] ='xx'.encode('utf-8').decode()
-        # self.name_known_list[3] ='xx'.encode('utf-8').decode()
-        # self.name_known_list[4] ='xx'.encode('utf-8').decode()
+    # Default known name: person_1, person_2, person_3
+    # self.name_known_list[0] ='张三'.encode('utf-8').decode()
+    # self.name_known_list[1] ='李四'.encode('utf-8').decode()
+    # self.name_known_list[2] ='xx'.encode('utf-8').decode()
+    # self.name_known_list[3] ='xx'.encode('utf-8').decode()
+    # self.name_known_list[4] ='xx'.encode('utf-8').decode()
 
     # 处理获取的视频流，进行人脸识别 / Input video stream and face reco process
     def process(self, stream):
@@ -219,6 +218,7 @@ class Face_Recognizer:
         cap.release()
         cv2.destroyAllWindows()
 
+
 @app.route('/face_reco_from_camera', methods=['POST'])
 def face_reco_from_camera():
     Face_Recognizer_con = Face_Recognizer()
@@ -227,4 +227,4 @@ def face_reco_from_camera():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5000)

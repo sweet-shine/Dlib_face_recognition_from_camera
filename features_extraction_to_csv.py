@@ -16,16 +16,16 @@ import csv
 import numpy as np
 
 # 要读取人脸图像文件的路径
-path_images_from_camera = "data/data_faces_from_camera/"
+path_images_from_camera = "static/data_faces_from_camera/"
 
 # 1. Dlib 正向人脸检测器
 detector = dlib.get_frontal_face_detector()
 
 # 2. Dlib 人脸 landmark 特征点检测器
-predictor = dlib.shape_predictor('data/data_dlib/shape_predictor_68_face_landmarks.dat')
+predictor = dlib.shape_predictor('static/data_dlib/shape_predictor_68_face_landmarks.dat')
 
 # 3. Dlib Resnet 人脸识别模型，提取 128D 的特征矢量
-face_reco_model = dlib.face_recognition_model_v1("data/data_dlib/dlib_face_recognition_resnet_model_v1.dat")
+face_reco_model = dlib.face_recognition_model_v1("static/data_dlib/dlib_face_recognition_resnet_model_v1.dat")
 
 
 # 返回单张图像的 128D 特征
@@ -76,13 +76,13 @@ def return_features_mean_personX(path_faces_personX):
 
 
 # 获取已录入的最后一个人脸序号 / get the num of latest person
-person_list = os.listdir("data/data_faces_from_camera/")
+person_list = os.listdir("static/data_faces_from_camera/")
 person_num_list = []
 for person in person_list:
     person_num_list.append(int(person.split('_')[-1]))
 person_cnt = max(person_num_list)
 
-with open("data/features_all.csv", "w", newline="") as csvfile:
+with open("static/features_all.csv", "w", newline="") as csvfile:
     writer = csv.writer(csvfile)
     for person in range(person_cnt):
         # Get the mean/average features of face/personX, it will be a list with a length of 128D
@@ -91,4 +91,4 @@ with open("data/features_all.csv", "w", newline="") as csvfile:
         writer.writerow(features_mean_personX)
         print("特征均值 / The mean of features:", list(features_mean_personX))
         print('\n')
-    print("所有录入人脸数据存入 / Save all the features of faces registered into: data/features_all.csv")
+    print("所有录入人脸数据存入 / Save all the features of faces registered into: static/features_all.csv")

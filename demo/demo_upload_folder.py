@@ -4,7 +4,7 @@
 #
 # import os
 #
-# folder = os.path.abspath(os.path.join(os.getcwd(), "..\data\photos"))
+# folder = os.path.abspath(os.path.join(os.getcwd(), "..\static\photos"))
 # path = os.path.join(folder, 'test.txt')
 # # print(os.listdir('/'))
 # # print(os.getcwd())

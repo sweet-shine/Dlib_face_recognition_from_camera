@@ -22,7 +22,7 @@ detector = dlib.get_frontal_face_detector()
 
 class Face_Register:
     def __init__(self):
-        self.path_photos_from_camera = "data/data_faces_from_camera/"
+        self.path_photos_from_camera = "static/data_faces_from_camera/"
         self.font = cv2.FONT_ITALIC
 
         self.existing_faces_cnt = 0     # 已录入的人脸计数器
@@ -46,21 +46,21 @@ class Face_Register:
         else:
             os.mkdir(self.path_photos_from_camera)
 
-    # 删除之前存的人脸数据文件夹 / Delete the old data of faces
+    # 删除之前存的人脸数据文件夹 / Delete the old static of faces
     def pre_work_del_old_face_folders(self):
         # 删除之前存的人脸数据文件夹, 删除 "/data_faces_from_camera/person_x/"...
         folders_rd = os.listdir(self.path_photos_from_camera)
         for i in range(len(folders_rd)):
             shutil.rmtree(self.path_photos_from_camera+folders_rd[i])
-        if os.path.isfile("data/features_all.csv"):
-            os.remove("data/features_all.csv")
+        if os.path.isfile("static/features_all.csv"):
+            os.remove("static/features_all.csv")
 
     # 如果有之前录入的人脸, 在之前 person_x 的序号按照 person_x+1 开始录入 /
     # If the old folders exists, start from person_x+1
     def check_existing_faces_cnt(self):
-        if os.listdir("data/data_faces_from_camera/"):
+        if os.listdir("static/data_faces_from_camera/"):
             # 获取已录入的最后一个人脸序号 / Get the num of latest person
-            person_list = os.listdir("data/data_faces_from_camera/")
+            person_list = os.listdir("static/data_faces_from_camera/")
             person_num_list = []
             for person in person_list:
                 person_num_list.append(int(person.split('_')[-1]))
@@ -94,10 +94,10 @@ class Face_Register:
         # 1. 新建储存人脸图像文件目录 / Uncomment if you need mkdir
         # self.pre_work_mkdir()
 
-        # 2. 删除 "/data/data_faces_from_camera" 中已有人脸图像文件 / Uncomment if want to delete the old faces
+        # 2. 删除 "/static/data_faces_from_camera" 中已有人脸图像文件 / Uncomment if want to delete the old faces
         self.pre_work_del_old_face_folders()
 
-        # 3. 检查 "/data/data_faces_from_camera" 中已有人脸文件
+        # 3. 检查 "/static/data_faces_from_camera" 中已有人脸文件
         self.check_existing_faces_cnt()
 
         while stream.isOpened():

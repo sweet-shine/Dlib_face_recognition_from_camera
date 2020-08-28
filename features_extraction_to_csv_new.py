@@ -42,7 +42,13 @@ def return_128d_features(path_img):
     # 因为有可能截下来的人脸再去检测，检测不出来人脸了
     # 所以要确保是 检测到人脸的人脸图像 拿去算特征
     if len(faces) != 0:
+        # 返回：68个关键点的位置；参数1：一个numpy ndarray，包含8位灰度或RGB图像；参数2：开始内部形状预测的边界框；
         shape = predictor(img_rd, faces[0])
+
+        # 功能：图像中的68个关键点转换为128D面部描述符，其中同一人的图片被映射到彼此附近，并且不同人的图片被远离地映射。
+        # 参数：img_rd：人脸灰度图，类型：numpy.ndarray
+        # 　　　shape：68个关键点位置
+        # 返回值：128D面部描述符
         face_descriptor = face_reco_model.compute_face_descriptor(img_rd, shape)
     else:
         face_descriptor = 0
@@ -81,7 +87,7 @@ def return_features_mean_personX(path_faces_personX):
 
 def get_num_of_lastest_person():
     # 获取已录入的最后一个人脸序号 / get the num of latest person
-    person_list = os.listdir("data/data_faces_from_camera/")
+    person_list = os.listdir("static/data_faces_from_camera/")
     person_num_list = []
     for person in person_list:
         person_num_list.append(int(person.split('_')[-1]))
@@ -90,7 +96,7 @@ def get_num_of_lastest_person():
 
 
 def write_to_csv():
-    with open("data/features_all.csv", "w", newline="") as csvfile:
+    with open("static/features_all.csv", "w", newline="") as csvfile:
         writer = csv.writer(csvfile)
         for person in range(get_num_of_lastest_person()):
             # Get the mean/average features of face/personX, it will be a list with a length of 128D
@@ -99,7 +105,7 @@ def write_to_csv():
             writer.writerow(features_mean_personX)
             print("特征均值 / The mean of features:", list(features_mean_personX))
             print('\n')
-        print("所有录入人脸数据存入 / Save all the features of faces registered into: data/features_all.csv")
+        print("所有录入人脸数据存入 / Save all the features of faces registered into: static/features_all.csv")
 
 
 @app.route('/features_extraction_to_csv', methods=['POST'])
